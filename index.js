@@ -18,7 +18,9 @@ const apiKey = 'AIzaSyDJUlKU5COjmdJ-hD2yBR3XKGtWjxqjtkw';
 
 
 /** fetch the parks with our API key */
-function getParks(query, resultsNum) {};
+function getParks(query, resultsNum) {
+    console.log(query);
+};
 
 /** Extract  data from responseJson and make it into usable string for inserting into HTML */
 function extractData() {};
@@ -29,10 +31,10 @@ function createHTML() {};
 
 /** event listener */
 function handleSubmit() {
-    $('form').submit(event => {
+    $('form').submit( event => {
         event.preventDefault();
         const searchTerm = $('#state-input').val();
-        const maxResults = $('$max-results-input').val();
+        const maxResults = $('#max-results-input').val();
         getParks(searchTerm, maxResults);
     });
 };
