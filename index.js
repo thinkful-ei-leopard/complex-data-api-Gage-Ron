@@ -31,7 +31,7 @@ function getParks(query, resultsNum) {
  */
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
   return queryItems.join('&');
 }
 
@@ -50,9 +50,10 @@ function createHTML(responseJson) {
       </address>
       <p><a href='${responseJson.data[i].url}'>Click for More Info</a></p>
       </li>`
-    )};
+    );
+  }
   $('#results').removeClass('hidden');
-};
+}
 
 /** event listener */
 function handleSubmit() {
@@ -62,10 +63,10 @@ function handleSubmit() {
     const maxResults = $('#max-results-input').val();
     getParks(searchTerm, maxResults);
   });
-};
+}
 
 function main() {
   handleSubmit();
-};
+}
 
 $(main);
