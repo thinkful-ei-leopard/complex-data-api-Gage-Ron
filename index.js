@@ -39,10 +39,15 @@ function formatQueryParams(params) {
 function createHTML(responseJson) {
   $('#results-list').empty();
   for (let i = 0; i < responseJson.data.length; i++){
+    const physicalAddress = responseJson.data[i].addresses.find(addy => addy.type === 'Physical');
     $('#results-list').append(
       `<li><h3>${responseJson.data[i].fullName}</h3>
       <p>${responseJson.data[i].description}</p>
-      <p>${responseJson.data[i].addresses}</p>
+      <address>
+        <p>${physicalAddress.line1}</p>
+        <p>${physicalAddress.line2} ${physicalAddress.line3}</p>
+        <p>${physicalAddress.city}, ${physicalAddress.stateCode} ${physicalAddress.postalCode}</p>
+      </address>
       <p><a href='${responseJson.data[i].url}'>Click for More Info</a></p>
       </li>`
     )};
