@@ -13,8 +13,6 @@ function getParks(query, resultsNum) {
   const queryString = formatQueryParams(params);
   const url = searchURL + '?' + queryString;
 
-  console.log(url);
-
   fetch(url)
     .then(response => {
       if (response.ok) {
@@ -27,13 +25,17 @@ function getParks(query, resultsNum) {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
 }
-
+/** This formats Query Parameters. params is an Object that will be turned
+ * into a string that can then be appended to the rest of the URL.
+ * (URL = path + "?" + queryString)
+ */
 function formatQueryParams(params) {
-    const queryItems = Object.keys(params)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    return queryItems.join('&');
+  const queryItems = Object.keys(params)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+  return queryItems.join('&');
 }
 
+/** Creates our HTML template and inputs the data from the JSON object */
 function createHTML(responseJson) {
   $('#results-list').empty();
   for (let i = 0; i < responseJson.data.length; i++){
