@@ -1,3 +1,4 @@
+const endpoint =  'https://developer.nps.gov/api/v1/alerts';
 const apiKey = 'AIzaSyDJUlKU5COjmdJ-hD2yBR3XKGtWjxqjtkw';
 
 // User must be able to search for parks in one or more states
